@@ -19,11 +19,19 @@ section {
 }
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: #f7f7f7; color: #222; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; letter-spacing: 0.3s;
+}
+
+main {
+    flex: 1;
 }
 
 .encabezado {
     text-align: center; padding: 20px;
+    box-shadow: 0 -6px 5px 5px;
 }
 
 .nav {
@@ -77,6 +85,8 @@ body {
 
 /* Tarjetas */
 .tarjeta {
+    color: black;
+    text-decoration: none;
     background: white; border-radius: 15px; padding: 12px; transition: 0.3s; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; cursor: pointer;
 }
 
@@ -134,6 +144,35 @@ margin: 10px 0 5px;
 .btn-overlay {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: white; color: black; padding: 8px 15px; border-radius: 20px; border: none; opacity: 0; transition: 0.3s;
 }
+
+/* ----------------- DETALLES ----------------- */
+
+.section-detalles {
+    display: flex;
+    padding: 50px;
+}
+
+.detalles-img {
+    width: 50%;
+}
+
+.detalles-img img {
+    width: 100%;
+}
+
+.detalles {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalles h1, .detalles h3, .detalles p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* ----------------- /DETALLES ----------------- */
+
 
 .pie {
     background-color: #222; color: white; padding: 30px; margin-top: 40px;
