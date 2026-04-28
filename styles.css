@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+/* Colores que se van usando */
 :root {
     --primary: #ff7eb3; --secondary: #ff758c; --text: #222; --bg: #f7f7f7; --soft: #fff0f5;
 }
@@ -59,11 +60,12 @@ main {
     height: 80vh; position: relative; overflow: hidden;
 }
 
+/* Configuración visual del video */
 .video-banner{
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.1);
+    width: 100%; height: auto;
 }
 .banner::before {
-    content: ""; position: absolute; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);
+    content: ""; position: absolute; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.1);
 }
 
 .texto-banner {
@@ -111,7 +113,7 @@ main {
 }
 
 .tarjeta:hover .btn-overlay {
-    opacity: 1; bottom: 20px;
+    opacity: 1; bottom: 10px;
 }
 
 .tarjeta h3 {
@@ -142,7 +144,14 @@ margin: 10px 0 5px;
 }
 
 .btn-overlay {
-    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: white; color: black; padding: 8px 15px; border-radius: 20px; border: none; opacity: 0; transition: 0.3s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text);
+    border: none;
+    opacity: 0;
+    transition: 0.3s;
 }
 
 /* ----------------- DETALLES ----------------- */
@@ -191,7 +200,7 @@ margin: 10px 0 5px;
 }
 
 .copyright {
-    text-align: center; margin-top: 20px; font-size: 12px;
+    text-align: center; margin-top: 20px; font-size: 15px;
 }
 
 /* Responsive */
