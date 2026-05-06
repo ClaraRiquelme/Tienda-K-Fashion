@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de ropa</title>
+    <title>Detalle Producto</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,11 +11,15 @@
         <h1 class="titulo">Mi Tienda de Ropa</h1>
 
         <nav class="nav">
-            <a href="#">Inicio</a>
-            <a href="#">Mujer</a>
-            <a href="#">Hombre</a>
+            <a href="index.html">Inicio</a>
+            <a href="mujer.html">Mujer</a>
+            <a href="hombre.html">Hombre</a>
             <a href="#">Ofertas</a>
         </nav>
+
+        <div class="carrito">
+            🛒 (0)
+        </div>
     </header>
 
     <main>
@@ -25,9 +29,16 @@
             </div>
 
             <div class="detalles">
-                <h1>Pantalón jeans</h1>
-                <h3>$30.000</h3>
-                <p>Unos lindos pantalones</p>
+                <h1>Jeans Baggy Azul</h1>
+                <p class="precio">$30.000 CLP</p>
+                <p class="descripcion">
+                    Jeans estilo baggy con corte ancho, inspirado en tendencias coreanas.
+                    Cómodo, versátil y perfecto para outfits urbanos.
+                </p>
+                <p><strong>Tallas: </strong>S - M - L</p>
+
+                <button class="boton">Agregar al carrito</button>
+                <button class="boton" style="background:black;">Comprar ahora</button>
             </div>
         </section>
     </main>
@@ -54,7 +65,7 @@
 
         </div>
 
-        <p class="copyright">© 2026 Mi Tienda</p>
+        <p class="copyright">© 2026 Mi Tienda Todos los derechos reservados</p>
     </footer>
 </body>
 </html>
