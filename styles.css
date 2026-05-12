@@ -277,7 +277,6 @@ section {
     flex-direction: column;
     justify-content: start;
     padding: 20px 70px 20px 70px;
-    width: 50%;
 }
 
 .carrito-container {
@@ -291,8 +290,9 @@ section {
     justify-content: space-evenly;
     background-color: gainsboro;
     border-radius: 50px;
-    padding: 50px;
-    margin: 20px;
+    padding: 20px;
+    margin: 10px;
+    width: 50%;
 }
 
 .carrito-item-img {
@@ -306,10 +306,23 @@ section {
 .carrito-detalles {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    width: 60%;
+}
+
+.carrito-detalles h2 {
+    margin: 10px 0;
+}
+
+.carrito-detalles h4 {
+    margin: 10px 0;
+    text-indent: 5%;
 }
 
 .carrito-detalles div {
     display: inline;
+    margin-top: 30px;
+    align-self: center;
 }
 
 .carrito-detalles div button, .carrito-buttons button {

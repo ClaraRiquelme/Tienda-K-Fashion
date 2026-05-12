@@ -1,3 +1,5 @@
+// Global variables
+const addToCartButtonClass = "boton";
 // "Colección" de "Base de datos" con las características de cada ropa
 const db = [
     {
@@ -126,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     "descripcion": element.descripcion,
                     "tallas": element.tallas,
                     "imagen": element.imagen,
-                    "cantidad": 0
+                    "cantidad": 1
                 }
                 cart.push(item_to_push)
                 console.log(cart);
@@ -134,6 +136,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
             localStorage.setItem("cart", JSON.stringify(cart));
         })
+
+        container.append(item);
+    }
+});
+
+// carrito.html
+document.addEventListener("DOMContentLoaded", function() {
+    const carrito_main = document.getElementsByClassName("carrito-main");
+    if (carrito_main.length === 0) return;
+
+    const container = carrito_main[0].children[0]
+    const original_item = container.children[0];
+    original_item.remove();
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log("Cart:");
+    console.log(cart);
+
+    for (const item_in_cart of cart) {
+        console.log("Nombre: " + item_in_cart.nombre + " Cantidad: " + item_in_cart.cantidad);
+        const item = original_item.cloneNode(true);
+
+        item.children[0].children[0].src = item_in_cart.imagen;
+        item.children[1].children[0].innerHTML = item_in_cart.nombre;
+        const precio_number = item_in_cart.precio.toString();
+        let count = 0;
+        const precio1 = precio_number.substring(count, precio_number.length % 3);
+        count += precio_number.length % 3;
+        const precio2 = precio_number.substring(count);
+        item.children[1].children[1].innerHTML = "$" + precio1 + "." + precio2 + " CLP";
+        item.children[1].children[2].innerHTML = "Cantidad: " + item_in_cart.cantidad;
 
         container.append(item);
     }
