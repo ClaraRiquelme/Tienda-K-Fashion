@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle Producto</title>
+    <title>Tienda de ropa</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </head>
@@ -19,31 +19,34 @@
         </nav>
         
         <div class="carrito">
-            <a href="carrito.html">
+            <a>
                 🛒 (0)
             </a>
         </div>
     </header>
 
     <main>
-        <section class="section-detalles">
-            <div class="detalles-img">
-                <img src="fotosRopa/outfit1.jpg">
+        <div class="carrito-main">
+            <div class="carrito-container">
+                <div class="carrito-item">
+                    <div class="carrito-item-img">
+                        <img src="fotosRopa/outfit1.jpg">
+                    </div>
+                    <div class="carrito-detalles">
+                        <h3>Título</h3>
+                        <h4>Precio</h4>
+                        <div>
+                            <button class="red-button">Quitar</button>
+                            <button class="green-button">Comprar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="detalles">
-                <h1>Jeans Baggy Azul</h1>
-                <p class="precio">$30.000 CLP</p>
-                <p class="descripcion">
-                    Jeans estilo baggy con corte ancho, inspirado en tendencias coreanas.
-                    Cómodo, versátil y perfecto para outfits urbanos.
-                </p>
-                <p><strong>Tallas: </strong>S - M - L</p>
-
-                <button class="boton">Agregar al carrito</button>
-                <button class="boton" style="background:black;">Comprar ahora</button>
+            <div class="carrito-buttons">
+                <button class="red-button">Quitar todo</button>
+                <button class="green-button">Comprar todo</button>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="pie">
@@ -68,7 +71,7 @@
 
         </div>
 
-        <p class="copyright">© 2026 Mi Tienda Todos los derechos reservados</p>
+        <p class="copyright">© 2026 Mi Tienda</p>
     </footer>
 </body>
 </html>

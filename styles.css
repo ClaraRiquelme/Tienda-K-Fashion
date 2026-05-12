@@ -5,6 +5,8 @@
 /* Colores que se van usando */
 :root {
     --primary: #ff7eb3; --secondary: #ff758c; --text: #222; --bg: #f7f7f7; --soft: #fff0f5;
+    --cancel-color:#f64a4a;
+    --confirm-color: #82ff82;
 }
 
 body {
@@ -68,6 +70,15 @@ body {
     border-radius: 20px;
     font-weight: bold;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.carrito a {
+    text-decoration: none;
+    color: black;
+}
+
+.carrito a:active {
+    color: black;
 }
 
 .carrito img {
@@ -257,7 +268,81 @@ section {
     margin: 0 0 10px
 }
 
-/* ----------------- /DETALLES FOOTER----------------- */
+/* ----------------- /DETALLES ----------------- */
+
+/* ----------------- CARRITO ----------------- */
+
+.carrito-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px 70px 20px 70px;
+    width: 50%;
+}
+
+.carrito-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: gainsboro;
+    border-radius: 50px;
+    padding: 50px;
+    margin: 20px;
+}
+
+.carrito-item-img {
+    width: 30%;
+}
+
+.carrito-item-img img {
+    width: 100%;
+}
+
+.carrito-detalles {
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-detalles div {
+    display: inline;
+}
+
+.carrito-detalles div button, .carrito-buttons button {
+    border-style: none;
+    border-radius: 30px;
+    margin: 0 10px;
+}
+
+.carrito-detalles div button {
+    padding: 10px 20px;
+}
+
+.red-button {
+    background-color: var(--cancel-color);
+}
+
+.green-button {
+    background-color: var(--confirm-color);
+}
+
+.carrito-buttons {
+    align-self: flex-end;
+    margin: 0 50px;
+}
+
+.carrito-buttons button {
+    padding: 10px 30px;
+}
+
+/* ----------------- /CARRITO ----------------- */
+
+/* ----------------- PIE ----------------- */
+
 .pie {
     background-color: #222;
     color: white;
