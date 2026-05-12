@@ -9,9 +9,8 @@
     --text: #222;
     --bg: #f7f7f7;
     --soft: #fff0f5;
-    --blue-soft: #e3f2fd;
-    --lila-soft: #f3e8ff;
-    --beige-soft: #fdf6ec;
+    --cancel-color:#f64a4a;
+    --confirm-color: #82ff82;
 }
 
 body {
@@ -80,20 +79,36 @@ main {
     top: 20px;
     right: 30px;
     background: white;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.carrito a {
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: var(--text);
+}
+
+.carrito a:active {
+    color: black;
 }
 
 .carrito img {
-    width: 28px;
+    width: 30px;
+    height: auto;
+    object-fit: contain;
 }
 
 .carrito span {
-    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text);
 }
 
 /* Mensaje simulado carrito de compras */
@@ -395,7 +410,75 @@ section {
     margin: 0 0 10px;
 }
 
-/* ----------------- FOOTER ----------------- */
+/* Carrito */
+.carrito-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px 70px 20px 70px;
+    width: 50%;
+}
+
+.carrito-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: gainsboro;
+    border-radius: 50px;
+    padding: 50px;
+    margin: 20px;
+}
+
+.carrito-item-img {
+    width: 30%;
+}
+
+.carrito-item-img img {
+    width: 100%;
+}
+
+.carrito-detalles {
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-detalles div {
+    display: inline;
+}
+
+.carrito-detalles div button, .carrito-buttons button {
+    border-style: none;
+    border-radius: 30px;
+    margin: 0 10px;
+}
+
+.carrito-detalles div button {
+    padding: 10px 20px;
+}
+
+.red-button {
+    background-color: var(--cancel-color);
+}
+
+.green-button {
+    background-color: var(--confirm-color);
+}
+
+.carrito-buttons {
+    align-self: flex-end;
+    margin: 0 50px;
+}
+
+.carrito-buttons button {
+    padding: 10px 30px;
+}
+
+/* ----------------- /DETALLES FOOTER----------------- */
 .pie {
     background: #1e1e1e;
     color: white;
