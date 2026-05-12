@@ -3,48 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de ropa</title>
+    <title>Kpop Fantasy</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="encabezado">
-        <h1 class="titulo">Mi Tienda de Ropa</h1>
+            <h1 class="titulo">Kpop Fantasy Store</h1>
 
         <nav class="nav">
-            <a href="#">Inicio</a>
-            <a href="#">Mujer</a>
-            <a href="#">Hombre</a>
-            <a href="#">Ofertas</a>
+            <a href="index.html">Inicio</a>
+            <a href="mujer.html">Mujer</a>
+            <a href="hombre.html">Hombre</a>
+            <a href="ofertas.html">Ofertas</a>
         </nav>
+        <div class="carrito">
+            <img src="fotosVarias/carrito.png" alt="Carrito">
+            <span>(0)</span>
+        </div>
     </header>
 
     <main>
-        
+        <section class="destacados">
+            <h2>Título de sección</h2>
+            <p style="text-align:center;">
+                Aquí agregas contenido nuevo
+            </p>
+        </section>
+
+        <section class="galeria">
+
+            <div class="tarjeta">
+                <div class="img-container">
+                    <img src="fotosRopa/imagen.jpg" alt="">
+                    <a href="detalles.html" class="btn-overlay">Ver más</a>
+                </div>
+
+                <h3>Nombre producto</h3>
+                <p class="precio">$00.000</p>
+                <button class="boton">Agregar al carrito</button>
+            </div>
+
+        </section>
+
     </main>
 
-    <footer class="pie">
-        <div class="contenido-pie">
+<footer class="pie">
 
-            <div>
-                <h3>Mi Tienda</h3>
-                <p>Moda inspirada en tendencias coreanas</p>
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+            <img src="fotosVarias/logo.png" alt="Logo">
+            <h3>Kpop Fantasy</h3>
+            <p>Moda inspirada en tendencias coreanas</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Redes</h4>
+
+            <div class="red-social">
+                <img src="fotosVarias/instagram.png" alt="Instagram"
+                <span>Instagram</span>
             </div>
 
-            <div>
-                <h4>Redes</h4>
-                <p>Instagram</p>
-                <p>TikTok</p>
-                <p>Facebook</p>
+            <div class="red-social">
+                <img src="fotosVarias/facebook.png" alt="Facebook"
+                <span>Facebook</span>
             </div>
 
-            <div>
-                <h4>Contacto</h4>
-                <p>contacto@mitienda.cl</p>
+            <div class="red-social">
+                <img src="fotosVarias/whatsapp.png" alt="Whatsapp"
+                <span>Whatsapp</span>
             </div>
 
         </div>
 
-        <p class="copyright">© 2026 Mi Tienda</p>
-    </footer>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <p>contacto@kpopfantasy.cl</p>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Kpop Fantasy · Todos los derechos reservados
+    </p>
+
+</footer>
 </body>
 </html>
