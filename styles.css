@@ -5,8 +5,12 @@
 /* Colores que se van usando */
 :root {
     --primary: #ff7eb3; --secondary: #ff758c; --text: #222; --bg: #f7f7f7; --soft: #fff0f5;
-    --cancel-color:#f64a4a;
+    --cancel-color: #f64a4a;
+    --cancel-color-hover: #ff9090;
+    --cancel-color-active: #e22a2a;
     --confirm-color: #82ff82;
+    --confirm-color-hover: #b0ffb0;
+    --confirm-color-active: #53ec53;
 }
 
 body {
@@ -335,12 +339,28 @@ section {
     padding: 10px 20px;
 }
 
-.red-button {
+.remove-button, .remove-all-button {
     background-color: var(--cancel-color);
 }
 
-.green-button {
+.remove-button:hover, .remove-all-button:hover {
+    background-color: var(--cancel-color-hover);
+}
+
+.remove-button:active, .remove-all-button:active {
+    background-color: var(--cancel-color-active);
+}
+
+.purchase-button, .purchase-all-button {
     background-color: var(--confirm-color);
+}
+
+.purchase-button:hover, .purchase-all-button:hover {
+    background-color: var(--confirm-color-hover);
+}
+
+.purchase-button:active, .purchase-all-button:active {
+    background-color: var(--confirm-color-active);
 }
 
 .carrito-buttons {
