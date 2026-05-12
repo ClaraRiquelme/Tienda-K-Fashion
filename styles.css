@@ -79,7 +79,8 @@ main {
 
 /* Carrito de compras simulado */
 .carrito {
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     top: 20px;
     right: 30px;
     background: white;
