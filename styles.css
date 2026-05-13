@@ -110,12 +110,6 @@ main {
     object-fit: contain;
 }
 
-.carrito span {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--text);
-}
-
 /* Mensaje simulado carrito de compras */
 .mensaje {
     color: green;
@@ -392,7 +386,7 @@ section {
 
 /* ----------------- DETALLES Otra página----------------- */
 
-.section-detalles {
+#section-detalles {
     display: flex;
     padding: 50px;
 }
@@ -627,7 +621,7 @@ section {
         gap: 15px;
     }
 
-    .section-detalles {
+    #section-detalles {
         flex-direction: column;
     }
 
