@@ -496,6 +496,36 @@ section {
     margin: 0 0 10px;
 }
 
+#quantity-buttons {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
+#quantity-buttons button {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    border-style: none;
+}
+
+#quantity-buttons button:hover {
+    transform: scale(1.05);
+}
+
+#quantity-buttons button:active {
+    background: var(--cancel-color-active);
+}
+
+#quantity-buttons p {
+    padding: 0 15px;
+    text-align: center;
+}
+
 /* ----------------- PÁGINA CARRITO ----------------- */
 
 #carrito-main {
@@ -553,18 +583,45 @@ section {
     text-indent: 5%;
 }
 
-.item-detalles div {
+.item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.item-quantity h4 {
+    margin-right: 20px;
+}
+
+.item-quantity button {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    font-size: large;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 30px;
+    width: 40px;
+    height: 30px;
+}
+
+.item-quantity button:hover {
+    transform: scale(1.05);
+}
+
+.item-quantity button:active {
+    background: var(--cancel-color-active);
+}
+
+.item-detalles .modify-buttons {
     display: inline;
     margin-top: 30px;
     align-self: center;
 }
 
-.item-detalles div button, .carrito-buttons button {
+.item-detalles .modify-buttons button, .carrito-buttons button {
     border-style: none;
     border-radius: 30px;
 }
 
-.item-detalles div button {
+.item-detalles .modify-buttons button {
     padding: 10px 20px;
 }
 

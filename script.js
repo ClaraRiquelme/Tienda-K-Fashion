@@ -177,7 +177,7 @@ function addToCart(product, cart_quantity_text) {
     for (const item_in_cart of cart) {
         // Si ya está en carrito, aumentar cantidad
         if (item_in_cart.id === product.id) {
-            item_in_cart.cantidad += 1;
+            item_in_cart.cantidad += product.cantidad;
             exists = true;
             break;
         }
@@ -353,11 +353,56 @@ document.addEventListener("DOMContentLoaded", function() {
             item_detalles.children[1].innerHTML = precioToString(item_in_cart.precio);
     
             // Cantidad
-            item_detalles.children[2].innerHTML = "Cantidad: " + item_in_cart.cantidad;
+            item_detalles.children[2].children[2].innerHTML = item_in_cart.cantidad;
 
-            // Precio total
-            item_detalles.children[3].innerHTML = "Precio total: " + precioToString(item_in_cart.precio * item_in_cart.cantidad);
+            // Precio subtotal
+            item_detalles.children[3].innerHTML = "Precio subtotal: " + precioToString(item_in_cart.precio * item_in_cart.cantidad);
             precio_total += item_in_cart.precio * item_in_cart.cantidad;
+
+            // Se asignan listeners a los botones de cantidad
+            const botones_cantidad = item_detalles.children[2];
+            const cantidad_texto = botones_cantidad.children[2];
+            // Boton -
+            botones_cantidad.children[1].addEventListener("click", function() {
+                let cantidad = parseInt(cantidad_texto.innerHTML);
+                cantidad--;
+                if (cantidad < 1) cantidad = 1;
+
+                cantidad_texto.innerHTML = cantidad;
+                item_in_cart.cantidad = cantidad;
+                localStorage.setItem(cartStorageName, JSON.stringify(cart));
+
+                // Se actualiza el subtotal
+                item_detalles.children[3].innerHTML = "Precio subtotal: " + precioToString(cantidad * item_in_cart.precio);
+
+                // Se actualiza el resumen total
+                let nuevo_precio_total = 0;
+                for (const item_in_cart of cart) {
+                    nuevo_precio_total += item_in_cart.cantidad * item_in_cart.precio;
+                }
+                precio_total_text.innerHTML = precioToString(nuevo_precio_total);
+            });
+
+            // Boton +
+            botones_cantidad.children[3].addEventListener("click", function() {
+                let cantidad = parseInt(cantidad_texto.innerHTML);
+                cantidad++;
+                if (cantidad > 100) cantidad = 100;
+
+                cantidad_texto.innerHTML = cantidad;
+                item_in_cart.cantidad = cantidad;
+                localStorage.setItem(cartStorageName, JSON.stringify(cart));
+
+                // Se actualiza el subtotal
+                item_detalles.children[3].innerHTML = "Precio subtotal: " + precioToString(cantidad * item_in_cart.precio);
+
+                // Se actualiza el resumen total
+                let nuevo_precio_total = 0;
+                for (const item_in_cart of cart) {
+                    nuevo_precio_total += item_in_cart.cantidad * item_in_cart.precio;
+                }
+                precio_total_text.innerHTML = precioToString(nuevo_precio_total);
+            });
     
             container.append(item);
         }
@@ -467,14 +512,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Envío
 
+    // Botones de modificar cantidad
+    const quantity_buttons = document.getElementById("quantity-buttons");
+    // Se consigue el texto de la cantidad
+    const quantity_text = quantity_buttons.children[1];
+
+    // Boton -
+    quantity_buttons.firstElementChild.addEventListener("click", function() {
+        let quantity = parseInt(quantity_text.innerHTML);
+        quantity--;
+        if (quantity < 1) quantity = 1;
+
+        quantity_text.innerHTML = quantity;
+    });
+
+    // Boton +
+    quantity_buttons.lastElementChild.addEventListener("click", function() {
+        let quantity = parseInt(quantity_text.innerHTML);
+        quantity++;
+        if (quantity > 100) quantity = 100;
+
+        quantity_text.innerHTML = quantity;
+    });
+
     // Se añade callback al botón "Agregar al carrito"
-    detalles.children[7].addEventListener("click", function() {
+    detalles.children[8].addEventListener("click", function() {
         const item_to_push = {
             "id": element.id,
             "nombre": element.nombre,
             "precio": element.precio,
             "imagen": element.imagen,
-            "cantidad": 1
+            "cantidad": parseInt(quantity_text.innerHTML)
         }
         addToCart(item_to_push, cart_quantity_text);
     })
