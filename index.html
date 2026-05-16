@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kpop Fantasy</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 </head>
 <body>
 <header class="encabezado">
@@ -26,9 +25,14 @@
     </nav>
 
     <div class="acciones-header">
-        <a href="login/login.html" class="login-link" id="userButton">
-        👤 Iniciar Sesión
-        </a>
+        <div class="usuario-box">
+            <a href="login/login.html" class="login-link" id="loginLink">Inicio Sesión</a>
+
+            <div id="userPanel" style="display:none;">
+                <span id="userName"></span>
+                <button id="logoutBtn">Cerrar sesión</button>
+            </div>
+        </div>
 
         <div class="carrito">
             <a href="carrito.html">
@@ -165,5 +169,6 @@
     </p>
 
 </footer>
+    <script src="script.js"></script>
 </body>
 </html>

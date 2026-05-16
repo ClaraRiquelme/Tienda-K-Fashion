@@ -71,6 +71,44 @@ section {
     transform: scale(1.05);
 }
 
+/* ----------------- USUARIO ----------------- */
+.usuario-box {
+    display: flex;
+    align-items: center;
+}
+
+#userPanel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#userName {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#logoutBtn {
+    border: none;
+    background: #ffe6ef;
+    color: var(--primary);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+#logoutBtn:hover {
+    background: var(--primary);
+    color: white;
+}
+
 /* ----------------- ENCABEZADO ----------------- */
 .encabezado {
     display: flex;
@@ -655,40 +693,84 @@ section {
 
 /* ----------------- RESPONSIVE ----------------- */
 @media (max-width: 768px) {
-    .texto-banner h2,
-    .texto-oferta h2 {
-        font-size: 32px;
-    }
 
-    .galeria {
+    .encabezado {
         padding: 20px;
-        gap: 15px;
     }
 
-    #section-detalles {
+    .logo-box {
         flex-direction: column;
+        gap: 8px;
     }
 
-    .detalles-img {
+    .logo-box span {
+        font-size: 26px;
+    }
+
+    .nav {
+        gap: 10px;
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .carrito {
+        position: static;
+        padding: 8px 14px;
+    }
+
+    #container {
+        width: 100%;
+        min-height: auto;
+        border-radius: 18px;
+    }
+
+    .form-container,
+    .overlay-container {
+        width: 100%;
+        position: relative;
+    }
+
+    .overlay-container {
+        display: none;
+    }
+
+    .login,
+    .register {
+        position: relative;
+        width: 100%;
+        transform: none !important;
+        opacity: 1;
+    }
+
+    .content {
+        padding: 30px 20px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    button {
         width: 100%;
     }
+}
 
-    .detalles {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-    
-    .footer-grid {
+@media (max-width: 992px) {
+    .encabezado {
         grid-template-columns: 1fr;
+        gap: 20px;
         text-align: center;
     }
 
-    .footer-brand p {
-        margin: auto;
+    .logo-box,
+    .nav,
+    .acciones-header {
+        justify-self: center;
     }
 
-    .footer-col {
-        border-left: none;
-        padding-left: 0;
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
+

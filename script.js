@@ -360,3 +360,20 @@ document.addEventListener("keydown", function(event) {
         console.log(cart);
     }
 });
+
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+const userName = document.getElementById("userName");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginLink = document.getElementById("loginLink");
+const userPanel = document.getElementById("userPanel");
+
+if (usuarioActivo && userName && logoutBtn && loginLink && userPanel) {
+    userName.textContent = "Hola, " + usuarioActivo.name + " 💖";
+    userPanel.style.display = "flex";
+    loginLink.style.display = "none";
+}
+
+logoutBtn?.addEventListener("click", () => {
+    localStorage.removeItem("usuarioActivo");
+    window.location.reload();
+});

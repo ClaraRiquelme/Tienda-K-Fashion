@@ -28,7 +28,13 @@ document.getElementById("registerBtn").addEventListener("click", function () {
     };
 
     localStorage.setItem(email, JSON.stringify(user));
-    alert("Usuario registrado correctamente ✨");
+
+    document.getElementById("registerMessage").textContent =
+        "Cuenta creada correctamente ✨ Redirigiendo...";
+
+    setTimeout(() => {
+        container.classList.remove("active");
+    }, 1500);
 });
 
 // Iniciar sesión
@@ -39,9 +45,11 @@ document.getElementById("loginBtn").addEventListener("click", function () {
     const user = JSON.parse(localStorage.getItem(email));
 
     if (user && user.password === password) {
+
+        localStorage.setItem("usuarioActivo", JSON.stringify(user));
+
         alert("Bienvenida " + user.name + " 💖");
         window.location.href = "../index.html";
-    } else {
-        alert("Correo o contraseña incorrectos");
+
     }
 });
