@@ -17,7 +17,7 @@ const db = [
         "id": 2,
         "nombre": "Suéter Beige Oversize",
         "precio": 10000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit2.jpg"
     },
@@ -25,7 +25,7 @@ const db = [
         "id": 3,
         "nombre": "Top Denim Crop",
         "precio": 10000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit3.jpg"
     },
@@ -33,7 +33,7 @@ const db = [
         "id": 4,
         "nombre": "Polerón Lila Oversize",
         "precio": 10000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit4.jpg"
     },
@@ -41,7 +41,7 @@ const db = [
         "id": 5,
         "nombre": "Polera Estampada Kawaii",
         "precio": 10000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit5.jpg"
     },
@@ -49,7 +49,7 @@ const db = [
         "id": 6,
         "nombre": "Vestido Blanco Corto",
         "precio": 20000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit6.jpg"
     },
@@ -57,7 +57,7 @@ const db = [
         "id": 7,
         "nombre": "Jeans Rectos Celeste",
         "precio": 20000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit7.jpg"
     },
@@ -65,7 +65,7 @@ const db = [
         "id": 8,
         "nombre": "Chaqueta Varsity Negra",
         "precio": 20000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit8.jpg"
     },
@@ -73,7 +73,7 @@ const db = [
         "id": 9,
         "nombre": "Blazer Negro Elegante",
         "precio": 20000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit9.jpg"
     },
@@ -81,25 +81,85 @@ const db = [
         "id": 10,
         "nombre": "Top Rosado Blanco",
         "precio": 20000,
-        "descripcion": "DESCRIPCION",
+        "descripcion": "",
         "tallas": ["S", "M", "L"],
         "imagen": "fotosRopa/outfit10.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Black Dress",
+        "precio": 19990,
+        "descripcion": "",
+        "tallas": ["S", "M", "L"],
+        "imagen": "fotosRopa/destacado1m.png",
+        "destacado": true
+    },
+    {
+        "id": 12,
+        "nombre": "Urban Street",
+        "precio": 24990,
+        "descripcion": "",
+        "tallas": ["S", "M", "L"],
+        "imagen": "fotosRopa/destacado2h.png",
+        "destacado": true
+    },
+    {
+        "id": 13,
+        "nombre": "Sailor Dress",
+        "precio": 19990,
+        "descripcion": "",
+        "tallas": ["S", "M", "L"],
+        "imagen": "fotosRopa/destacado3m.png",
+        "destacado": true
+    },
+    {
+        "id": 14,
+        "nombre": "Oversize Seoul",
+        "precio": 29990,
+        "descripcion": "",
+        "tallas": ["S", "M", "L"],
+        "imagen": "fotosRopa/destacado4h.png",
+        "destacado": true
+    },
+    {
+        "id": 15,
+        "nombre": "Chaqueta amarilla",
+        "precio": 24990,
+        "descripcion": "",
+        "tallas": ["S", "M", "L"],
+        "imagen": "fotosRopa/destacado4h.png",
+        "categoria": "mujer"
     }
 ]
 
 /**
  * Formatea el precio para mostrarlo en pesos chilenos.
  *
- * @param {number} precio El precio a formatear
+ * @param {number} price El precio a formatear
  * @returns {string} El precio formateado
  */
-function precioToString(precio) {
-    const precio_number = precio.toString();
-    let count = 0;
-    const precio1 = precio_number.substring(count, precio_number.length % 3);
-    count += precio_number.length % 3;
-    const precio2 = precio_number.substring(count);
-    return "$" + precio1 + "." + precio2 + " CLP";
+function precioToString(price) {
+    const price_number = price.toString();
+    const total_digits = price_number.length;
+    const modulo = total_digits % 3;
+
+    let price_text = "$";
+
+    if (modulo != 0) {
+        price_text = price_text.concat(price_number.substring(0, modulo));
+        price_text = price_text.concat(".");
+    }
+
+    const iterations = (total_digits - modulo) / 3
+    for (let i = 0; i < iterations; i++) {
+        price_text = price_text.concat(price_number.substring(modulo + i * 3, modulo + i * 3 + 3));
+        if (i < iterations - 1) {
+            price_text = price_text.concat(".");
+        }
+    }
+    price_text = price_text.concat(" CLP");
+
+    return price_text;
 }
 
 /**
@@ -153,6 +213,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Conseguimos el contenedor de las tarjetas
     // y la tarjeta de plantilla
+    const container_destacados = galerias[0];
+    const original_item_destacado = container_destacados.firstElementChild;
+    original_item_destacado.remove();
+
     const container = galerias[1];
     const original_item = container.children[0];
     original_item.remove();
@@ -163,68 +227,115 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Añadimos las tarjetas dinámicamente
     for (const element of db) {
+        if (element.destacado === undefined) {
+            // Clonamos la tarjeta plantilla
+            // y le asignamos los valores correspondientes
+            const item = original_item.cloneNode(true);
 
-        // Clonamos la tarjeta plantilla
-        // y le asignamos los valores correspondientes
-        const item = original_item.cloneNode(true);
+            // Imagen
+            item.children[0].children[0].src = element.imagen;
 
-        // Imagen
-        item.children[0].children[0].src = element.imagen;
+            // Se asigna el link del botón "Ver más"
+            // al URL de detalles.html con el id del elemento como parámetro
+            // para que la página de detalles muestre los datos de este elemento
+            item.children[0].children[1].href = "detalles.html?id=" + element.id;
 
-        // Se asigna el link del botón "Ver más"
-        // al URL de detalles.html con el id del elemento como parámetro
-        // para que la página de detalles muestre los datos de este elemento
-        item.children[0].children[1].href = "detalles.html?id=" + element.id;
+            // Nombre ropa
+            item.children[1].innerHTML = element.nombre;
 
-        // Nombre ropa
-        item.children[1].innerHTML = element.nombre;
+            // Precio
+            item.children[2].innerHTML = precioToString(element.precio);
 
-        // Precio
-        item.children[2].innerHTML = precioToString(element.precio);
+            // Se añade un callback al botón de "Agregar al carrito"
+            item.children[3].addEventListener("click", function(event) {
+                // event.preventDefault();
 
-        // Se añade un callback al botón de "Agregar al carrito"
-        item.children[3].addEventListener("click", function(event) {
-            // event.preventDefault();
+                // Creamos el objeto con los datos importantes
+                // para insertarlo en el carrito
+                // TODO: agregar talla y diferenciarlo de otro elemento
+                // del mismo tipo en el carrito
+                const item_to_push = {
+                    "id": element.id,
+                    "nombre": element.nombre,
+                    "precio": element.precio,
+                    "imagen": element.imagen,
+                    "cantidad": 1
+                }
+                addToCart(item_to_push, cart_quantity_text);
+            })
 
-            // Creamos el objeto con los datos importantes
-            // para insertarlo en el carrito
-            // TODO: agregar talla y diferenciarlo de otro elemento
-            // del mismo tipo en el carrito
-            const item_to_push = {
-                "id": element.id,
-                "nombre": element.nombre,
-                "precio": element.precio,
-                "imagen": element.imagen,
-                "cantidad": 1
-            }
-            addToCart(item_to_push, cart_quantity_text);
-        })
+            // Se añade la nueva tarjeta al contenedor/galería
+            container.append(item);
+        } else {
+            // Clonamos la tarjeta plantilla
+            // y le asignamos los valores correspondientes
+            const item = original_item_destacado.cloneNode(true);
 
-        // Se añade la nueva tarjeta al contenedor/galería
-        container.append(item);
+            // Imagen
+            item.children[1].children[0].src = element.imagen;
+
+            // Se asigna el link del botón "Ver más"
+            // al URL de detalles.html con el id del elemento como parámetro
+            // para que la página de detalles muestre los datos de este elemento
+            item.children[1].children[1].href = "detalles.html?id=" + element.id;
+
+            // Nombre ropa
+            item.children[2].innerHTML = element.nombre;
+
+            // Precio
+            item.children[3].innerHTML = precioToString(element.precio);
+
+            // Se añade un callback al botón de "Agregar al carrito"
+            item.children[4].addEventListener("click", function(event) {
+                // event.preventDefault();
+
+                // Creamos el objeto con los datos importantes
+                // para insertarlo en el carrito
+                // TODO: agregar talla y diferenciarlo de otro elemento
+                // del mismo tipo en el carrito
+                const item_to_push = {
+                    "id": element.id,
+                    "nombre": element.nombre,
+                    "precio": element.precio,
+                    "imagen": element.imagen,
+                    "cantidad": 1
+                }
+                addToCart(item_to_push, cart_quantity_text);
+            })
+
+            // Se añade la nueva tarjeta al contenedor/galería
+            container_destacados.append(item);
+        }
     }
 });
 
 // carrito.html
 document.addEventListener("DOMContentLoaded", function() {
     // Si no hay carrito-main, no estamos en carrito.html y salimos de la función prematuramente
-    const carrito_main = document.getElementsByClassName("carrito-main");
-    if (carrito_main.length === 0) return;
+    const carrito_main = document.getElementById("carrito-main");
+    if (carrito_main === null) return;
 
     // Conseguimos el contenedor de las tarjetas
     // y la tarjeta de plantilla
-    const container = carrito_main[0].children[0]
-    const original_item = container.children[0];
+    const container = document.getElementById("carrito-lista");
+    const original_item = container.firstElementChild;
     original_item.remove();
 
     // Conseguimos el carrito desde la memoria
     const cart = JSON.parse(localStorage.getItem(cartStorageName)) || [];
 
     if (cart.length === 0) { // Si el carrito está vacío, se muestra mensaje acorde.
-        container.remove();
+        container.parentElement.remove();
 
-        carrito_main[0].innerHTML = "Tu carrito está vacío"
-    } else {  
+        carrito_main.innerHTML = "<h1>Carrito</h1><p>Tu carrito está vacío</p>"
+    } else {
+
+        // Se consigue el texto del precio total
+        const precio_total_text = document.getElementById("resumen-precio-total").lastElementChild;
+
+        // Precio total para el resumen
+        let precio_total = 0;
+
         // Por cada elemento del carrito, se crea una tarjeta      
         for (const item_in_cart of cart) {
             const item = original_item.cloneNode(true);
@@ -243,6 +354,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
             // Cantidad
             item_detalles.children[2].innerHTML = "Cantidad: " + item_in_cart.cantidad;
+
+            // Precio total
+            item_detalles.children[3].innerHTML = "Precio total: " + precioToString(item_in_cart.precio * item_in_cart.cantidad);
+            precio_total += item_in_cart.precio * item_in_cart.cantidad;
     
             container.append(item);
         }
@@ -260,6 +375,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 location.reload();
             })
         })
+    
+        // Se consiguen los botones de "Comprar" para configurar su comportamiento
+        const buttons_purchase = Array.from(document.getElementsByClassName("purchase-button"));
+        buttons_purchase.forEach((btn, index) => {
+            // Se añade un callback al botón
+            btn.addEventListener("click", function(event) {
+                // Se elimina el elemento del carrito y se guarda en memoria
+                const element_removed = cart.splice(index, 1);
+                localStorage.setItem(cartStorageName, JSON.stringify(cart));
+
+                // Se recarga la página
+                location.reload();
+            })
+        })
+
+        // Se muestra el precio total del carrito
+        precio_total_text.innerHTML = precioToString(precio_total);
 
         // Los botones de "Quitar todo" y "Comprar todo" se comportan igual:
         // Eliminan el carrito

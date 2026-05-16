@@ -471,17 +471,22 @@ section {
 #section-detalles {
     display: flex;
     padding: 50px;
+    justify-content: center;
 }
 
 .detalles-img {
-    width: 50%;
+    width: 400px;
+    height: 500px;
+    text-align: center;
 }
 
 .detalles-img img {
-    width: 100%;
+    /* width: 100%; */
+    height: 100%;
 }
 
 .detalles {
+    max-width: 400px;
     margin-left: 50px;
     display: flex;
     flex-direction: column;
@@ -492,16 +497,26 @@ section {
 }
 
 /* ----------------- PÁGINA CARRITO ----------------- */
-.carrito-main {
+
+#carrito-main {
+    padding: 50px;
+}
+
+#carrito-main h1, #carrito-main p {
+    margin: 10px 20px;
+}
+
+#carrito-main .contenido > div {
+    display: flex;
+    align-items: flex-start;
+}
+
+#carrito-lista {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 20px 70px 20px 70px;
-}
-
-.carrito-container {
-    display: flex;
-    flex-direction: column;
+    padding-right: 40px;
+    flex-grow: 2;
 }
 
 .carrito-item {
@@ -512,46 +527,44 @@ section {
     border-radius: 50px;
     padding: 20px;
     margin: 10px;
-    width: 50%;
 }
 
 .carrito-item-img {
-    width: 30%;
+    height: 220px;
 }
 
 .carrito-item-img img {
-    width: 100%;
+    height: 100%;
 }
 
-.carrito-detalles {
+.item-detalles {
     display: flex;
     flex-direction: column;
     justify-content: start;
     width: 60%;
 }
 
-.carrito-detalles h2 {
+.item-detalles h2 {
     margin: 10px 0;
 }
 
-.carrito-detalles h4 {
+.item-detalles h4 {
     margin: 10px 0;
     text-indent: 5%;
 }
 
-.carrito-detalles div {
+.item-detalles div {
     display: inline;
     margin-top: 30px;
     align-self: center;
 }
 
-.carrito-detalles div button, .carrito-buttons button {
+.item-detalles div button, .carrito-buttons button {
     border-style: none;
     border-radius: 30px;
-    margin: 0 10px;
 }
 
-.carrito-detalles div button {
+.item-detalles div button {
     padding: 10px 20px;
 }
 
@@ -579,13 +592,28 @@ section {
     background-color: var(--confirm-color-active);
 }
 
+#resumen {
+    background-color: gainsboro;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#resumen #resumen-precio-total {
+    margin: 0 20px;
+}
+
 .carrito-buttons {
-    align-self: flex-end;
-    margin: 0 50px;
+    align-self: center;
+    width: 80%;
 }
 
 .carrito-buttons button {
     padding: 10px 30px;
+    width: 100%;
+    margin: 10px 0;
 }
 
 /* ----------------- /DETALLES FOOTER----------------- */
