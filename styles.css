@@ -836,6 +836,7 @@ section {
         font-size: 34px;
         padding: 0;
         margin: 0;
+        margin-right: 10px;
         min-width: auto;
         cursor: pointer;
     }
@@ -869,6 +870,7 @@ section {
 
     .carrito {
         position: static;
+        padding: 0;
     }
 
     .carrito a {
@@ -922,4 +924,10 @@ section {
     text-align: center;
     padding-right: 0;
 }
+}
+
+@media (max-width:500px) {
+    .usuario-box {
+        display: none;
+    }
 }
