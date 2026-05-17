@@ -408,6 +408,16 @@ section {
     transform: scale(1.05);
 }
 
+/* ----------------- BOTÓN OCULTO ----------------- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
 /* ----------------- TAG ----------------- */
 .tag {
     position: absolute;
@@ -777,80 +787,13 @@ section {
 }
 
 /* ----------------- RESPONSIVE ----------------- */
-@media (max-width: 768px) {
-
-    .encabezado {
-        padding: 20px;
-    }
-
-    .logo-box {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .logo-box span {
-        font-size: 26px;
-    }
-
-    .nav {
-        gap: 10px;
-        font-size: 14px;
-        flex-wrap: wrap;
-    }
-
-    .carrito {
-        position: static;
-        padding: 8px 14px;
-    }
-
-    #container {
-        width: 100%;
-        min-height: auto;
-        border-radius: 18px;
-    }
-
-    .form-container,
-    .overlay-container {
-        width: 100%;
-        position: relative;
-    }
-
-    .overlay-container {
-        display: none;
-    }
-
-    .login,
-    .register {
-        position: relative;
-        width: 100%;
-        transform: none !important;
-        opacity: 1;
-    }
-
-    .content {
-        padding: 30px 20px;
-    }
-
-    input {
-        font-size: 16px;
-    }
-
-    button {
-        width: 100%;
-    }
-}
-
 @media (max-width: 992px) {
     .encabezado {
-        grid-template-columns: 1fr;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 20px;
         text-align: center;
-    }
-
-    .logo-box,
-    .nav,
-    .acciones-header {
-        justify-self: center;
+        padding: 20px;
     }
 
     .nav {
@@ -859,3 +802,49 @@ section {
     }
 }
 
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .encabezado {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo-box span {
+        font-size: 24px;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin-top: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        gap: 12px;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav span {
+        display: none;
+    }
+
+    .acciones-header {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .carrito {
+        position: static;
+    }
+}

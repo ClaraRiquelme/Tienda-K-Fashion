@@ -561,6 +561,7 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+//Usuario ingresado
 const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
 const userName = document.getElementById("userName");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -576,4 +577,12 @@ if (usuarioActivo && userName && logoutBtn && loginLink && userPanel) {
 logoutBtn?.addEventListener("click", () => {
     localStorage.removeItem("usuarioActivo");
     window.location.reload();
+});
+
+//BOTÓN OCULTO PARA RESPONSIVE
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
+
+menuToggle?.addEventListener("click", () => {
+    mobileNav.classList.toggle("active");
 });
